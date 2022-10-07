@@ -2,9 +2,25 @@
 import cv2 
 import os 
 import face_encodings as FE
+from gtts import gTTS
 
 directory = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages'
 os.chdir(directory)
+
+
+def announce(name):
+    announcement=''
+    if(name=='Unknown' or not name):
+        announcement='An Unknown guest has arrived on your doorstep.'
+    else: 
+        announcement=name+' is on your doorstep.'
+
+    audio = gTTS(text=announcement, lang="en", slow=False)
+    audio.save("example.mp3")
+    os.system("afplay " + "example.mp3")
+    return announcement
+    
+        
 
 key = cv2. waitKey(1)
 webcam = cv2.VideoCapture(1)
@@ -32,7 +48,8 @@ while True:
             print("Resized...")
             img_resized = cv2.imwrite(filename='saved_img-final.jpg', img=img_)
             print("Image saved!")
-            print(FE.processImg())
+            os.system("afplay " + "bell2.mp3")
+            print(announce(FE.processImg()))
             continue
             
         elif key == ord('q'):

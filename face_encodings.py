@@ -72,5 +72,6 @@ def processImg():
         if matches[best_match_index]:
             name = known_face_names[best_match_index]
         face_names.append(name)
-
+    if face_names:
+        return face_names[0]
     return face_names
