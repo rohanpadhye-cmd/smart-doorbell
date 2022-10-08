@@ -1,0 +1,12 @@
+{
+  "type": "service_account",
+  "project_id": "smart-doorbell-1c452",
+  "private_key_id": "ebc642aab3fbde151f8bc3c2db633ea361e96a7c",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEvQIBADANBgkqhkiG9w0BAQEFAASCBKcwggSjAgEAAoIBAQC3xjoLSatWDFYp\ndM/qfX7QDbfGzlQcvY+OqeChDSBbpF9KPSIZdJh+o4aDkT0uWsMj/M/KBDioLhq4\nrMbwlVfa2FfPrveG8feFEi/VzXXKqb1QeIqu4tDbjpVp9GEI0/prMBXeX98QKIcA\nGfTHu/igYQnG8ouSbqwJZpAUyVcmYQq3kE3CAj7biZu1SobmaNxX4WLSzminNTwE\nPSV2MVb2UlBSO47Crepk5qVvtt7V/+EYFQUi8fhyQ55tSgvaBeAtOsyCyjGKbi4/\ng6VRTIE/q5FFG5ENP5/WSjyNgZonpephNZSxLY/IkPpuN1I8i7C8OYqz3qvZ9QSP\ngmBByuhBAgMBAAECggEADo/Vf5l5yxq1JRnNc8434zKDEmy8+34Fxw8s7nYEz14p\n8s7/SbcUckxw1zIGAAtPFSXuLRrChokIswN1zBB5Yqzr4FgD4xx/OXskcTOTlth2\nWM8EZjEwzYTxz/B+U93AJQgtY26DVVtwvxBPdhgt7j9iL/J+Hr9IQIJw/kSp9C9v\nyZIoiLqXS5pYLusKjm6FiLEqkaOWqkmScvsiVBqbXsBOGQPHtEoYJtUStLdFseEr\nQ9/96EsHa4ooIH6UZz2WBnYT5LIQcD795u9YcqJLP1HuFK19cdPaLSdBfyukPlQu\n+lwioHmVxpjV5VZnndIG1wDFHhK0y2ctVhJ7wLwhpQKBgQDvDQjzgr0RkQuYXTKz\nL7WQMkelCaMS0CBTwxu+LBu3UPbJHm/XTBB8AMuXwFhbIZ+iUfwzey9XPsxYfZQ0\nJB9e0fgvAVG7IM+1lEbKz5KPm6pLqASOinucDvT28eQmvfvLX1UUMO8nHvKuKz4Z\nSgwkiBJGf3Dyc4EeNa/PdXT/3wKBgQDEzeCf3Dni/ZtBvcgwUdWoxAHLc2JvO/sv\n57ndPuWu9a22wh9jQqpshXgAVf6cflpfKOzOrvX2TyR4bw8sj00g+m+B6RhgNqyD\nhJOY/esl9sQfrJcghGC66s5Dqg1iW37GGQqA9r5fMESaJH46duDtHtOzrGCRg3Db\nMoqmVIyb3wKBgQDBxgsveRbRmoWPqFxkq5O9o0Q4H6u0oEjUHR/r880zt8mUFbwL\nBXmHSw29oQj+Ni80YMjS4lPpoNn8ES+FZJKZRhKr56Hc0igMxHjuBXyENGbClRu8\nf7zbL7SaSFHspavpmwlYKKJzT77gN+VKkp9tLW/C/aMMpVxQpKwyur9weQKBgEhc\nrqf40Kv+tbRxdIcXv+jC0SoebeYadtyBZpzMAKXZHZtiOypDG+i1Fo+BDxI5fz8Y\nDCJewH9lUDKcG0c2FZT3oEJzE4xk7f+Zoq+RRYH6/tfqnNLO+cYgieDlSPCOVcm+\n8VbD4vGbDM5kdqlGhqOJPywESKmYW8mtBr/rvJufAoGAPEl6bf1lc4xXL6WBgpGq\nPed2Kw7S6qIsH2/6YtEbxjkM+oKT2FkXnLBcBN+wvav6T6x+V7/MOLxZCCDEbkQu\ngzwKN5PpzgTNSgOXczZyuDX9h8bdWIy3/XTCnWKLxN+Zk0m2olca3FD5gRGizAdc\nEi/O6r2tDf9Y7jCQPWMk99c=\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-j71dp@smart-doorbell-1c452.iam.gserviceaccount.com",
+  "client_id": "117676451846885970298",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-j71dp%40smart-doorbell-1c452.iam.gserviceaccount.com"
+}

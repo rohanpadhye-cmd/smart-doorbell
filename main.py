@@ -3,6 +3,15 @@ import cv2
 import os 
 import face_encodings as FE
 from gtts import gTTS
+# from firebase_admin import db, credentials 
+# import firebase_admin
+
+
+
+# cred = credentials.RefreshToken('firebase.json')
+# default_app = firebase_admin.initialize_app(cred)
+
+
 
 directory = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages'
 os.chdir(directory)

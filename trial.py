@@ -1,15 +1,18 @@
-import cv2
+import os, io
+from google.cloud import vision
+import pandas as pd
 
-cam = cv2.VideoCapture(1)
+os.environ['GOOGLE_APPLICATION_CREDENTIALS'] = r'googleapi.json'
+client = vision.ImageAnnotatorClient()
 
-while True:
-    check, frame = cam.read()
+file_name = 'zomato.webp'
+image_folder = './images/'
+image_path = os.path.join(image_folder, file_name)
 
-    cv2.imshow('video', frame)
+with io.open(image_path, 'rb') as image_file:
+    content = image_file.read()
 
-    key = cv2.waitKey(1)
-    if key == 27:
-        break
-
-cam.release()
-cv2.destroyAllWindows()
+image = vision.types.Image(content=content)
+response = client.logo_detection(image=image)
+logos = response.logo_annotations
+print('Logo Description:', logos.description)

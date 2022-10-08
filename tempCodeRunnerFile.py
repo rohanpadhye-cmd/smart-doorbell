@@ -1,1 +1,4 @@
-        os.system("afplay " + "bell2.mp3")
+
+# cred = credentials.RefreshToken('firebase.json')
+# default_app = firebase_admin.initialize_app(cred)
+
