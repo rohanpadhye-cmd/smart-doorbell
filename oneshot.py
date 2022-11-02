@@ -1,6 +1,7 @@
 import cv2
 import numpy as np
 import features
+import os
 
 
 def createDetector():
@@ -70,45 +71,45 @@ def detectFeatures(img, train_features):
 
 
 
-zomato =cv2.imread('TrainImages/zomato.png')
-zomato_features=getFeatures(zomato)
+def predict(ctr):
+    
+    directory = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TrainImages'
+    os.chdir(directory)
+    
+    
+    zomato =cv2.imread('zomato.png')
+    zomato_features=getFeatures(zomato)
 
-swiggy =cv2.imread('TrainImages/swiggy2.png')
-swiggy_features=getFeatures(swiggy)
+    swiggy =cv2.imread('swiggy2.png')
+    swiggy_features=getFeatures(swiggy)
 
-amazon =cv2.imread('TrainImages/amazon.png')
-amazon_features=getFeatures(amazon)
+    amazon =cv2.imread('amazon.png')
+    amazon_features=getFeatures(amazon)
 
 
-known_logo_encodings= [
-    zomato_features,
-    swiggy_features,
-    amazon_features,
-]
+    known_logo_encodings= [
+        zomato_features,
+        swiggy_features,
+        amazon_features,
+    ]
 
-known_logo_names = [
-  
-    "Zomato",
-    "Swiggy",
-    "Amazon",
-]
+    known_logo_names = [
+    
+        "Zomato",
+        "Swiggy",
+        "Amazon",
+    ]
 
-test_img=cv2.imread('TestImages/amazon2.png')
-ctr=0
-for x in known_logo_encodings:
-    output=detectFeatures(test_img,x)
-    print(type(output))
-    if output!=None:
-        print(known_logo_names[ctr])
-        break
-    ctr=ctr+1
+    
+    test_img=cv2.imread('/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages/saved_img.jpg')
 
-if output is not None:
-    box = cv2.boxPoints(output)
-    box = np.int0(box)
-    # print(type(box))
-    cv2.drawContours(test_img, [box], 0, (0, 255, 0), 2)
-    print("Zomato logo found")
+    for x in known_logo_encodings:
+        output=detectFeatures(test_img,x)
+        print(type(output))
+        if output!=None:
+            print(known_logo_names[ctr])
+            break
+        ctr=ctr+1
 
-cv2.imshow("Preview", test_img)
-cv2.waitKey(0)
+
+

@@ -3,9 +3,7 @@ import cv2
 import os 
 import face_encodings as FE
 from gtts import gTTS
-# from firebase_admin import db, credentials 
-# import firebase_admin
-
+import oneshot 
 
 
 # cred = credentials.RefreshToken('firebase.json')
@@ -20,6 +18,8 @@ os.chdir(directory)
 def announce(name):
     announcement=''
     if(name=='Unknown' or not name):
+
+        oneshot.predict(0)
         announcement='An Unknown guest has arrived on your doorstep.'
     else: 
         announcement=name+' is on your doorstep.'
@@ -76,5 +76,7 @@ while True:
         # print("Program ended.")
         # cv2.destroyAllWindows()
         # break
+        
+    
     
 
