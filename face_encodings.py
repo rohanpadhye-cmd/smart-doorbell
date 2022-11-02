@@ -29,7 +29,6 @@ known_face_names = [
 
 ]
 
-
 face_locations = []
 face_encodings = []
 face_names = []
