@@ -1,5 +1,5 @@
 # smart-doorbell
-Project initialised
+Project initialised//
 Face recognition added
 Face recognition integrated
 Voice Announcement feature added
