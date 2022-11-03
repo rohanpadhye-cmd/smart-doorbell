@@ -4,6 +4,9 @@ import features
 import os
 
 
+
+
+
 def createDetector():
     detector = cv2.ORB_create(nfeatures=2000)
     return detector
@@ -100,8 +103,9 @@ def predict(ctr):
         "Amazon",
     ]
 
-    
-    test_img=cv2.imread('/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages/saved_img.jpg')
+    dir = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages'
+    os.chdir(dir)
+    test_img=cv2.imread('saved_img.jpg', cv2.IMREAD_UNCHANGED)
 
     for x in known_logo_encodings:
         output=detectFeatures(test_img,x)
