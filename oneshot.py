@@ -111,9 +111,9 @@ def predict(ctr):
         output=detectFeatures(test_img,x)
         print(type(output))
         if output!=None:
-            print(known_logo_names[ctr])
-            break
-        ctr=ctr+1
+            return(known_logo_names[ctr])
 
+        ctr=ctr+1
+    return None
 
 

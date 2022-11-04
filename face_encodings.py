@@ -7,8 +7,8 @@ rohan_image = face_recognition.load_image_file("TrainImages/rohan.jpg")
 rohan_face_encoding = face_recognition.face_encodings(rohan_image)[0]
 
 # Load a second sample picture and learn how to recognize it.
-raghu_image = face_recognition.load_image_file("TrainImages/raghu.png")
-raghu_face_encoding = face_recognition.face_encodings(raghu_image)[0]
+raghu_image = face_recognition.load_image_file("TrainImages/pratik.png")
+pratik_face_encoding = face_recognition.face_encodings(raghu_image)[0]
 
 
 
@@ -16,7 +16,7 @@ raghu_face_encoding = face_recognition.face_encodings(raghu_image)[0]
 known_face_encodings = [
   
     rohan_face_encoding,
-    raghu_face_encoding,
+    pratik_face_encoding,
 
    
     
@@ -24,7 +24,7 @@ known_face_encodings = [
 known_face_names = [
   
     "Rohan Padhye",
-    "Raghuttam Parvatikar",
+    "Pratik",
 
 
 ]

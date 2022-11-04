@@ -4,7 +4,9 @@ import os
 import face_encodings as FE
 from gtts import gTTS
 import oneshot 
-
+# import pyttsx3
+import datetime;
+  
 
 # cred = credentials.RefreshToken('firebase.json')
 # default_app = firebase_admin.initialize_app(cred)
@@ -15,32 +17,38 @@ directory = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages'
 os.chdir(directory)
 
 
+
 def announce(name):
     announcement=''
     if(name=='Unknown' or not name):
 
-        oneshot.predict(0)
-        announcement='An Unknown guest has arrived on your doorstep.'
+        Name =oneshot.predict(0)
+        if (Name==None):
+            os.system("afplay " + "unknown.mp3")
+            return 0
+        else:
+            announcement=Name+" delivery partner has arrived on your doorstep."
     else: 
         announcement=name+' is on your doorstep.'
-
-    audio = gTTS(text=announcement, lang="en", slow=False)
-    audio.save("example.mp3")
-    os.system("afplay " + "example.mp3")
     return announcement
     
-        
+
 
 key = cv2. waitKey(1)
 webcam = cv2.VideoCapture(1)
 while True:
     try:
+      
         check, frame = webcam.read()
         # print(check) #prints true as long as the webcam is running
         # print(frame) #prints matrix values of each framecd 
         cv2.imshow("Capturing", frame)
         key = cv2.waitKey(1)
         if key == ord('s'): 
+            
+            
+            
+            
             cv2.imwrite(filename='saved_img.jpg', img=frame)
             # webcam.release()
             img_new = cv2.imread('saved_img.jpg', cv2.IMREAD_GRAYSCALE)
@@ -57,8 +65,17 @@ while True:
             print("Resized...")
             img_resized = cv2.imwrite(filename='saved_img-final.jpg', img=img_)
             print("Image saved!")
-            os.system("afplay " + "bell2.mp3")
-            print(announce(FE.processImg()))
+            os.system("afplay " + "bell.mp3")
+            a=announce(FE.processImg())
+            if a != 0:
+                print("Output: ")
+                print(a)
+                ct = datetime.datetime.now()
+                print(ct)
+                voice=gTTS(text=a, lang='en', slow=False)
+                voice.save("guestName.mp3")
+                os.system("afplay " + "guestName.mp3")
+
             continue
             
         elif key == ord('q'):
@@ -71,12 +88,5 @@ while True:
         
     except(KeyboardInterrupt):
         print("Turning off camera.")
-        # webcam.release()
-        # print("Camera off.")
-        # print("Program ended.")
-        # cv2.destroyAllWindows()
-        # break
-        
-    
-    
+
 
