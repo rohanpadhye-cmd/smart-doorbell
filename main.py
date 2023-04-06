@@ -8,11 +8,23 @@ import oneshot
 import datetime;
 import time
 import uploadScreenshot
+import updateFaceModel
 import firebase_admin
-from firebase_admin import credentials
+from firebase_admin import credentials, storage
+from firebase_admin import firestore
 
-# cred = credentials.Certificate('/Users/rohanpadhye/Desktop/Projects/smart-doorbell/firebase.json')
-# firebase_admin.initialize_app(cred)
+
+cred = credentials.Certificate('/Users/rohanpadhye/Desktop/Projects/DSA/doorbell decode/firebase.json')
+firebase_admin.initialize_app(cred, {
+    'storageBucket': 'smartdoorbell-5c897.appspot.com'
+})
+
+db = firestore.client()
+bucket = storage.bucket()
+
+
+updateFaceModel.updateFaces(db)
+
 
 directory = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages'
 os.chdir(directory)
@@ -48,7 +60,7 @@ while True:
             cv2.imwrite(filename='saved_img.jpg', img=frame)
             # webcam.release()
             uploadScreenshot.uploadSS()
-            
+        
             img_new = cv2.imread('saved_img.jpg', cv2.IMREAD_GRAYSCALE)
             img_new = cv2.imshow("Captured Image", img_new)
             cv2.waitKey(1650)

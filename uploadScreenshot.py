@@ -2,25 +2,24 @@ import firebase_admin
 from firebase_admin import credentials
 from firebase_admin import firestore,storage
 import time
+import datetime
 import base64
 from PIL import Image
 import cv2
 import random
 import string 
-cred = credentials.Certificate('/Users/rohanpadhye/Desktop/Projects/DSA/doorbell decode/firebase.json')
-firebase_admin.initialize_app(cred, {
-    'storageBucket': 'smartdoorbell-5c897.appspot.com'
-})
+
 
 
 def uploadSS():
         
     # Open the original image
-    
-
-    # Get the dimensions of the image
     db = firestore.client()
     bucket = storage.bucket()
+    date = datetime.datetime.now()
+    unix_time = datetime.datetime.timestamp(date)*1000
+
+
     image_path = '/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages/saved_img.jpg'
     uploadImgName= ''.join(random.choices(string.ascii_uppercase +string.digits, k=6))
     blob = bucket.blob(f'files/{uploadImgName}.jpg')
@@ -34,7 +33,7 @@ def uploadSS():
         'imgLink': download_url,
         'name': 'unknown',
         'sent':False,
-        'timestamp':f'{int(time.time())}'
+        'timestamp':int(unix_time)
     }
 
 
@@ -42,4 +41,3 @@ def uploadSS():
         'imgDet': firestore.ArrayUnion([new_map])
     })
     
-uploadSS()
