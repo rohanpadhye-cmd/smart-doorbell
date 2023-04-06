@@ -6,17 +6,16 @@ from gtts import gTTS
 import oneshot 
 # import pyttsx3
 import datetime;
-  
+import time
+import uploadScreenshot
+import firebase_admin
+from firebase_admin import credentials
 
-# cred = credentials.RefreshToken('firebase.json')
-# default_app = firebase_admin.initialize_app(cred)
-
-
+# cred = credentials.Certificate('/Users/rohanpadhye/Desktop/Projects/smart-doorbell/firebase.json')
+# firebase_admin.initialize_app(cred)
 
 directory = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TestImages'
 os.chdir(directory)
-
-
 
 def announce(name):
     announcement=''
@@ -35,10 +34,10 @@ def announce(name):
 
 
 key = cv2. waitKey(1)
-webcam = cv2.VideoCapture(1)
+webcam = cv2.VideoCapture(0)
 while True:
     try:
-      
+        # uploadScreenshot.uploadSS(db)
         check, frame = webcam.read()
         # print(check) #prints true as long as the webcam is running
         # print(frame) #prints matrix values of each framecd 
@@ -46,11 +45,10 @@ while True:
         key = cv2.waitKey(1)
         if key == ord('s'): 
             
-            
-            
-            
             cv2.imwrite(filename='saved_img.jpg', img=frame)
             # webcam.release()
+            uploadScreenshot.uploadSS()
+            
             img_new = cv2.imread('saved_img.jpg', cv2.IMREAD_GRAYSCALE)
             img_new = cv2.imshow("Captured Image", img_new)
             cv2.waitKey(1650)
@@ -65,6 +63,7 @@ while True:
             print("Resized...")
             img_resized = cv2.imwrite(filename='saved_img-final.jpg', img=img_)
             print("Image saved!")
+            # uploadScreenshot.uploadSS()
             os.system("afplay " + "bell.mp3")
             a=announce(FE.processImg())
             if a != 0:
@@ -76,7 +75,7 @@ while True:
                 voice.save("guestName.mp3")
                 os.system("afplay " + "guestName.mp3")
 
-            continue
+            continue  
             
         elif key == ord('q'):
             print("Turning off camera.")

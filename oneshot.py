@@ -5,8 +5,6 @@ import os
 
 
 
-
-
 def createDetector():
     detector = cv2.ORB_create(nfeatures=2000)
     return detector

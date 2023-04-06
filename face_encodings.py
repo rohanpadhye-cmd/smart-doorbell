@@ -3,31 +3,32 @@ import cv2
 import os
 import numpy as np
 
-rohan_image = face_recognition.load_image_file("TrainImages/rohan.jpg")
-rohan_face_encoding = face_recognition.face_encodings(rohan_image)[0]
 
-# Load a second sample picture and learn how to recognize it.
-raghu_image = face_recognition.load_image_file("TrainImages/pratik.png")
-pratik_face_encoding = face_recognition.face_encodings(raghu_image)[0]
+IMAGE_FILES = []
+filename = []
+dir_path = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TrainImages/faces'
 
+for imagess in os.listdir(dir_path):
+    img_path = os.path.join(dir_path, imagess)
+    img_path = face_recognition.load_image_file(img_path)  # reading image and append to list
+    IMAGE_FILES.append(img_path)
+    filename.append(imagess.split(".", 1)[0])
 
-
-
-known_face_encodings = [
-  
-    rohan_face_encoding,
-    pratik_face_encoding,
-
-   
-    
-]
-known_face_names = [
-  
-    "Rohan Padhye",
-    "Pratik",
+def encoding_img(IMAGE_FILES):
+    encodeList = []
+    for img in IMAGE_FILES:
+        img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+        encode = face_recognition.face_encodings(img)[0]
+        encodeList.append(encode)
+    return encodeList
+known_face_encodings = encoding_img(IMAGE_FILES)
 
 
-]
+
+
+
+
+
 
 face_locations = []
 face_encodings = []
@@ -65,7 +66,7 @@ def processImg():
         face_distances = face_recognition.face_distance(known_face_encodings, face_encoding)
         best_match_index = np.argmin(face_distances)
         if matches[best_match_index]:
-            name = known_face_names[best_match_index]
+            name = filename[best_match_index]
         face_names.append(name)
     if face_names:
         return face_names[0]
