@@ -22,7 +22,7 @@ firebase_admin.initialize_app(cred, {
 db = firestore.client()
 bucket = storage.bucket()
 
-
+updateFaceModel.emptyFolder()
 updateFaceModel.updateFaces(db)
 
 

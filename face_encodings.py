@@ -14,6 +14,16 @@ for imagess in os.listdir(dir_path):
     IMAGE_FILES.append(img_path)
     filename.append(imagess.split(".", 1)[0])
 
+dir_path2 = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TrainImages/cloud'
+for imagess in os.listdir(dir_path2):
+    img_path = os.path.join(dir_path2, imagess)
+    img_path = face_recognition.load_image_file(img_path)  # reading image and append to list
+    IMAGE_FILES.append(img_path)
+    filename.append(imagess.split(".", 1)[0])
+
+
+
+
 def encoding_img(IMAGE_FILES):
     encodeList = []
     for img in IMAGE_FILES:
@@ -22,12 +32,6 @@ def encoding_img(IMAGE_FILES):
         encodeList.append(encode)
     return encodeList
 known_face_encodings = encoding_img(IMAGE_FILES)
-
-
-
-
-
-
 
 
 face_locations = []
