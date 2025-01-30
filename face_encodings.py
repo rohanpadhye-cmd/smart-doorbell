@@ -15,11 +15,11 @@ for imagess in os.listdir(dir_path):
     filename.append(imagess.split(".", 1)[0])
 
 dir_path2 = r'/Users/rohanpadhye/Desktop/Projects/smart-doorbell/TrainImages/cloud'
-for imagess in os.listdir(dir_path2):
-    img_path = os.path.join(dir_path2, imagess)
-    img_path = face_recognition.load_image_file(img_path)  # reading image and append to list
-    IMAGE_FILES.append(img_path)
-    filename.append(imagess.split(".", 1)[0])
+for imagess2 in os.listdir(dir_path2):
+    img_path2 = os.path.join(dir_path2, imagess2)
+    img_path2 = face_recognition.load_image_file(img_path2)  # reading image and append to list
+    IMAGE_FILES.append(img_path2)
+    filename.append(imagess2.split(".", 1)[0])
 
 
 

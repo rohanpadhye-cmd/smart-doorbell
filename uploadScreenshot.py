@@ -11,7 +11,7 @@ import string
 
 
 
-def uploadSS():
+def uploadSS(Name):
         
     # Open the original image
     db = firestore.client()
@@ -31,7 +31,7 @@ def uploadSS():
     doc_ref = db.collection('User1').document('images')
     new_map = {
         'imgLink': download_url,
-        'name': 'unknown',
+        'name': Name,
         'sent':False,
         'timestamp':int(unix_time)
     }
@@ -40,4 +40,6 @@ def uploadSS():
     doc_ref.update({
         'imgDet': firestore.ArrayUnion([new_map])
     })
+    
+
     

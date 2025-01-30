@@ -31,6 +31,8 @@ os.chdir(directory)
 
 def announce(name):
     announcement=''
+    
+    uploadScreenshot.uploadSS(name)
     if(name=='Unknown' or not name):
 
         Name =oneshot.predict(0)
@@ -41,6 +43,8 @@ def announce(name):
             announcement=Name+" delivery partner has arrived on your doorstep."
     else: 
         announcement=name+' is on your doorstep.'
+    
+
     return announcement
     
 
@@ -59,7 +63,7 @@ while True:
             
             cv2.imwrite(filename='saved_img.jpg', img=frame)
             # webcam.release()
-            uploadScreenshot.uploadSS()
+            
         
             img_new = cv2.imread('saved_img.jpg', cv2.IMREAD_GRAYSCALE)
             img_new = cv2.imshow("Captured Image", img_new)
